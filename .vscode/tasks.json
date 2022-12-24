@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "execute php",
+            "type": "shell",
+            "command": "php -S 127.0.0.1:8000 -t ."
+        },
+        {
+            "label": "serve result",
+            "type": "shell",
+            "command": "npx -y five-server@latest --port=5500 --open=http://localhost:8000 &"
+        },
+        {
+            "label": "preview",
+            "dependsOn": [
+                "execute php",
+                "serve result"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "sass main",
+            "type": "shell",
+            "command": "sass --watch ./static/css/main.scss:./static/css/main.css",
+            "problemMatcher": []
+        }
+    ]
+}
