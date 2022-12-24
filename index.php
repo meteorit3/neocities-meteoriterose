@@ -11,7 +11,7 @@ if (isset($_SERVER['REQUEST_URI'])){
 	$path = ltrim($_SERVER['REQUEST_URI'], '/');    // Trim leading slash(es)
 	$elements = explode('/', $path);                // Split path on slashes
 	if(empty($elements[0])) {                       // No path elements means home
-		$title = "UNDER CONSTRUCTION!!!!!!!!";
+		$title = "UNDER CONSTRUCTION!!!!";
 		$content = "includes/recent_posts.php";
 	} else switch(array_shift($elements))             // Pop off first item and switch
 	{
