@@ -1,7 +1,7 @@
 #!/bin/sh
-ROOTDIR="$HOME/Git/neocities-meteoriterose"
-php -S localhost:8008 -t $ROOTDIR &
+rootdir="$HOME/Git/neocities-meteoriterose"
+php -S localhost:8008 -t $rootdir &
 php_pid=$!;
 sleep 1;
-wget -rkE localhost:8008 -nH -P $ROOTDIR/render_result;
+wget -rkE localhost:8008 -nH -P $rootdir/render_result;
 kill $php_pid;
