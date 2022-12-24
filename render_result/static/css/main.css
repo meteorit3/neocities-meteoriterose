@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Rozha+One&display=swap");
+/* main.scss 0.1.0 | MIT License */
+/*	=================================================================
+	8ase Styles
+	================================================================= */
+/*	use a more intuitive 8ox Sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*	remove default Margin */
+* {
+  margin: 0;
+}
+
+/*	allow percentage-8ased Heights
+ *	default font size
+ *	accessi8le Line Height
+ *	8etter Text rendering on macos */
+html, body {
+  height: 100%;
+  font-size: 1em;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* improved media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+audio, iframe {
+  vertical-align: bottom;
+}
+
+/* remove 8uilt in form typography styles */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* improved default horizontal rule */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #AAAAAA;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*	=================================================================
+	Author Styles
+	================================================================= */
+/* color pallete expanded from here: https://coolors.co/051933-9f6f81-f5e9e2-00a7e1-007ea7 */
+:root {
+  --8lue1: #051933;
+  --8lue2: #006181;
+  --8lue3: #00A7E1;
+  --pink1: #bd728d;
+  --pink2: #9b3a5c;
+  --white: #f0f0fa;
+  --gray: #272229;
+  --8lack: #010001;
+}
+
+body {
+  background-image: url("../images/DREAMCITYBASECROPPED.png");
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 85%;
+  max-width: 900px;
+  margin-top: 30px;
+  background-color: var(--pink2);
+  border: 2px solid var(--pink2);
+  border-radius: 0 0.5em 0 0;
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--gray);
+}
+
+/* header */
+nav ul {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+nav ul li {
+  border-radius: 0 0.5em 0 0;
+  border: 2px solid var(--pink2);
+  background-color: var(--pink1);
+}
+nav ul a {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #051933;
+  padding: 0.5em;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--pink2);
+}
+footer img {
+  filter: opacity(50%);
+}
+
+/*# sourceMappingURL=main.css.map */
