@@ -1,0 +1,1 @@
+// get all the hashes from neocities / delete any that dont match the ones of the local version / push the rest
