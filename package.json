@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/meteorit3/neocities-meteoriterose#readme",
   "dependencies": {
-    "bent": "^7.3.12",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "tiny-json-http": "^7.4.2"
   }
 }
