@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/meteorit3/neocities-meteoriterose/issues"
   },
-  "homepage": "https://github.com/meteorit3/neocities-meteoriterose#readme",
-  "dependencies": {
-    "bent": "^7.3.12"
-  }
+  "homepage": "https://github.com/meteorit3/neocities-meteoriterose#readme"
 }
