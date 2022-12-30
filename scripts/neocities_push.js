@@ -49,7 +49,7 @@ const pLocalList = async (dir) => {
 }
 const pNeocitiesList = async () => {
     return axios.get('https://neocities.org/api/list', {
-        headers: { "Authorization": "Bearer " + process.env.AUTH },
+        headers: { "Authorization": "Bearer " + process.env.AUTH, },
         responseType: "json",
     }).then(response => {
         transformed_data = {}
@@ -68,13 +68,13 @@ const pNeocitiesList = async () => {
             8ar: {"is_directory": true}
         }
          so its easier 2 deal with l8er watever u Getit */
-        return (transformed_data)
+        return(transformed_data)
     }).catch(error => {
-        console.log("Error" + error)
+        console.log(error)
     })
 }
 
-const pNeocitiesPost = async (filepaths /* array */) => {
+const pNeocitiesUpload = async (filepaths /* array */) => {
     //send a POST request to /api/upload using a form with the file name and a stream of the file data attached to it
     //like this: form.append(files[i].name, fs.createReadStream(files[i].path))
     const form = new Formdata()
@@ -84,6 +84,17 @@ const pNeocitiesPost = async (filepaths /* array */) => {
         form.append(name, stream)
     }
     //now just send a form with form.getHeaders()
+    return axios.post('https://neocities.org/api/list', {
+        headers: {
+            ...form.getHeaders(),
+            "Authorization": "Bearer " + process.env.AUTH,
+        },
+    }).then(response => {
+        console.log(response)
+        return(response)
+    }).catch(error => {
+        console.log(error)
+    })
 }
 
 /*  =======================================================================
@@ -104,4 +115,5 @@ Promise.all([pLocalList('.'), pNeocitiesList()]).then(twoofthem => {
             delete twoofthem[1][f] //i.e. dont delete this file
         }
     }
+
 })
