@@ -1,14 +1,13 @@
-// get all the hashes from neocities / delete any that dont match the ones of the local version / push the rest
+const dotenv = require('dotenv').config() // set BASE_DIR and AUTH (api key or USERNAME:PASSWORD iirc) in .env
+const axios = require('axios') //i pro8ly didnt need this 8ut too L8 ::::3
+const Formdata = require('form-data')
 
-const dotenv = require('dotenv').config() // include .env file (API_KEY or NC_USER/NC_PASS for authorization)
-const axios = require('axios')
 const fs = require('fs')
 const { readdir } = require('fs').promises;
-const crypto = require('crypto')
+const crypto = require('crypto');
 
-process.chdir(process.env.BASE_DIR) // cwd to the one what has the files u wanna upload (set in .env)
 
-const getFileList = async (dir) => {
+const pRecursiveList = async (dir) => {
     let files = []
     const items = await readdir(dir, { withFileTypes: true })
     for (const item of items) {
@@ -16,50 +15,93 @@ const getFileList = async (dir) => {
         if (item.isDirectory()) {
             files = [
                 ...files,
-                ...(await getFileList(dir + '/' + item.name)),
+                ...(await pRecursiveList(dir + '/' + item.name)),
             ]
         }
     }
-    return (files)
-} //shameless Stolen from https://www.webmound.com/nodejs-get-files-in-directories-recursively/
+    return (await Promise.resolve(files))
+} //Shameless stolen from https://www.webmound.com/nodejs-get-files-in-directories-recursively/
 
-getFileList('.').then(list => {
-    let files = []
-    for (const item of list) {
-        let path = item[1].replace("./", "")
-        let is_directory = item[0].isDirectory()
-        let sha1_hash
-        let file_info = {
-            "path":path,
-            "is_directory":is_directory,
+const pLocalList = async (dir) => {
+    return pRecursiveList(dir).then(list => {
+        let files = {}
+        for (const item of list) {
+            let path = item[1].replace("./", "")
+            let is_directory = item[0].isDirectory()
+            let sha1_hash
+            let file_info = {
+                "is_directory": is_directory, // is directory
+            }
+            if (!is_directory) {
+                const fileBuffer = fs.readFileSync(path);
+                const hashSum = crypto.createHash('sha1');
+                hashSum.update(fileBuffer);
+                sha1_hash = hashSum.digest('hex');
+                file_info["sha1_hash"] = sha1_hash
+            }
+            files = {
+                ...files,
+                [path]: file_info,
+            }
         }
-        if (!is_directory) {
-            const fileBuffer = fs.readFileSync(path);
-            const hashSum = crypto.createHash('sha1');
-            hashSum.update(fileBuffer);
-            sha1_hash = hashSum.digest('hex');
-            file_info.sha1_hash = sha1_hash
+        return files
+    })
+}
+const pNeocitiesList = async () => {
+    return axios.get('https://neocities.org/api/list', {
+        headers: { "Authorization": "Bearer " + process.env.AUTH },
+        responseType: "json",
+    }).then(response => {
+        transformed_data = {}
+        for (const f in response.data["files"]) {
+            transformed_data = {
+                ...transformed_data,
+                [response.data["files"][f]["path"]]: {
+                    "is_directory": response.data["files"][f]["is_directory"],
+                    "sha1_hash": response.data["files"][f]["sha1_hash"],
+                },
+            }
         }
+        /* i wanna it 2 look like Dis
+        {
+            'foo.html' : {"is_directory": false, "sha1_hash": "Str34mS41NT4NG3R8unchaNum8ers"},
+            8ar: {"is_directory": true}
+        }
+         so its easier 2 deal with l8er watever u Getit */
+        return (transformed_data)
+    }).catch(error => {
+        console.log("Error" + error)
+    })
+}
 
-        files.push(file_info)
+const pNeocitiesPost = async (filepaths /* array */) => {
+    //send a POST request to /api/upload using a form with the file name and a stream of the file data attached to it
+    //like this: form.append(files[i].name, fs.createReadStream(files[i].path))
+    const form = new Formdata()
+    for (f in filepaths) {
+        let name = filepaths[f].split("/").pop() //this does mean u cant use '/' in the filename 8ut whatever Who Care
+        let stream = fs.createReadStream(filepaths[f])
+        form.append(name, stream)
     }
-    console.log(files)
-}).then(files => {
+    //now just send a form with form.getHeaders()
+}
+
+/*  =======================================================================
+    fuckin do it 
+    =====================================================================*/
+
+process.chdir(process.env.BASE_DIR) // cwd to the one what has the files u wanna upload (set in .env)
+
+Promise.all([pLocalList('.'), pNeocitiesList()]).then(twoofthem => {
+    // we get an O8ject containing 8oth our locally stored file list and the remote file list [0 and 1]
+    // filter out any files that match (files that havent changed since last push, so the hash is the same),
+    // and upload / delete all the remaining ones, respectively
+    console.log(twoofthem)
+    for (const f in twoofthem[0]) {
+        //does this file exist, and do the hashes match?
+        if (twoofthem[1][f]["sha1_hash"] == twoofthem[0][f]["sha1_hash"]) {
+            delete twoofthem[0][f] //i.e. dont upload this file
+            delete twoofthem[1][f] //i.e. dont delete this file
+        }
+    }
 })
-
-
-//var apiurl = 'https://' + process.env.API_KEY + "@neocities.org/api/list"
-/* commented to not spam neocities api
-axios.get('https://neocities.org/api/list', { 
-    headers: {"Authorization":"Bearer "+process.env.API_KEY}
-}).then(function (response) {
-    console.log("Response"+JSON.stringify(response.data))
-    for (const file in response.data.files) {
-
-    }
-
-}).catch(function (error) {
-    console.log("Error"+error) 
-}).finally(function () {
-
-}) */ 
