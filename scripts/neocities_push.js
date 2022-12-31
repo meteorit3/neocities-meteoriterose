@@ -2,6 +2,7 @@ const dotenv = require('dotenv').config() // set BASE_DIR and AUTH (api key or U
 const axios = require('axios') //i pro8ly didnt need this 8ut too L8 ::::3
 const Formdata = require('form-data')
 
+//it is Joke
 const fs = require('fs')
 const { readdir } = require('fs').promises
 const crypto = require('crypto')
