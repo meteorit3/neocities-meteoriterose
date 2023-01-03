@@ -4,7 +4,9 @@
 	8ase Styles
 	================================================================= */
 /*	use a more intuitive 8ox Sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -17,7 +19,11 @@
  *	default font size
  *	accessi8le Line Height
  *	8etter Text rendering on macos */
-html, body {
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow-y: hidden;
   height: 100%;
   font-size: 1em;
   line-height: 1.4;
@@ -25,22 +31,36 @@ html, body {
 }
 
 /* improved media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-audio, iframe {
+audio,
+iframe {
   vertical-align: bottom;
 }
 
 /* remove 8uilt in form typography styles */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -57,45 +77,69 @@ hr {
 /*	=================================================================
 	Author Styles
 	================================================================= */
-/* color pallete expanded from here: https://coolors.co/051933-9f6f81-f5e9e2-00a7e1-007ea7 */
 :root {
   --8lue1: #051933;
-  --8lue2: #006181;
-  --8lue3: #00A7E1;
+  --8lue2: #1a374d;
+  --8lue3: #5190A0;
   --pink1: #bd728d;
   --pink2: #9b3a5c;
   --white: #f0f0fa;
-  --gray: #272229;
+  --gray: #1E1E1E;
   --8lack: #010001;
 }
 
-body {
+html {
   background-image: url("/static/images/DREAMCITYBASECROPPED.png");
   background-position: bottom center;
   background-size: cover;
   background-repeat: no-repeat;
+  color: var(--white);
+  font-family: Verdana;
+  font-size: 16px;
 }
 
-main {
+#container {
   position: relative;
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 85%;
-  max-width: 900px;
-  margin-top: 30px;
-  background-color: var(--pink2);
-  border: 2px solid var(--pink2);
-  border-radius: 0 0.5em 0 0;
+  max-width: 1200px;
+  height: 100%;
+  padding-top: 30px;
 }
 
-article {
-  display: flex;
-  flex-direction: row;
-  background-color: var(--gray);
+main {
+  padding: 0;
 }
 
-/* header */
+.content {
+  padding: 10px;
+}
+
+#box-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  margin: 0;
+}
+#box-wrapper > div {
+  background-color: var(--8lue1);
+  border: 2px solid var(--8lack);
+  margin: 4px;
+}
+#box-wrapper > div > h2 {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: var(--8lue2);
+  color: var(--pink1);
+  font-size: 18px;
+}
+#box-wrapper > div > article {
+  padding: 10px;
+}
+
 nav ul {
   display: grid;
   grid-auto-flow: column;
@@ -127,6 +171,35 @@ footer {
 }
 footer img {
   filter: opacity(50%);
+}
+
+@media only screen and (max-width: 1000px) {
+  html,
+  body {
+    overflow: visible;
+  }
+  #container {
+    width: 100%;
+  }
+  #box-wrapper {
+    margin: 0;
+    grid-auto-flow: dense;
+  }
+  #box-wrapper div {
+    justify-self: center;
+    width: 95%;
+  }
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--pink2);
+}
+
+*::-webkit-scrollbar {
+  background-color: var(--pink1);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--pink1);
 }
 
 /*# sourceMappingURL=main.css.map */
