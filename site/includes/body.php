@@ -8,15 +8,13 @@
 					<h2>Heading</h2>
 					<article class="content">
 						<p><strong>Layout Features</strong></p>
-						
+
 					</article>
 				</div>
-				<div class="box-two scroll">
+				<nav>
 					<h2>Navigation</h2>
-					<nav>
-						<?php include('includes/nav.php') ?>
-					</nav>
-				</div>
+					<?php include('includes/nav.php') ?>
+				</nav>
 			</div>
 			<div id="box-wrapper">
 				<div class="box-three scroll">

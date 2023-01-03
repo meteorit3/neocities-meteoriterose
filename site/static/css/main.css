@@ -95,7 +95,6 @@ html {
   background-repeat: no-repeat;
   color: var(--white);
   font-family: Verdana;
-  font-size: 16px;
 }
 
 #container {
@@ -121,12 +120,12 @@ main {
   grid-auto-flow: column;
   margin: 0;
 }
-#box-wrapper > div {
+#box-wrapper > * {
   background-color: var(--8lue1);
   border: 2px solid var(--8lack);
   margin: 4px;
 }
-#box-wrapper > div > h2 {
+#box-wrapper > * > h2 {
   display: block;
   text-align: center;
   font-weight: bold;
@@ -134,22 +133,21 @@ main {
   padding-bottom: 5px;
   background-color: var(--8lue2);
   color: var(--pink1);
-  font-size: 18px;
+  font-size: 1.2em;
 }
-#box-wrapper > div > article {
+#box-wrapper > * > article {
   padding: 10px;
 }
 
 nav ul {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: auto;
+  grid-auto-flow: column dense;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 nav ul li {
-  border-radius: 0 0.5em 0 0;
+  border-radius: 0 0 0.5em 0;
   border: 2px solid var(--pink2);
   background-color: var(--pink1);
 }
@@ -185,7 +183,7 @@ footer img {
     margin: 0;
     grid-auto-flow: dense;
   }
-  #box-wrapper div {
+  #box-wrapper > * {
     justify-self: center;
     width: 95%;
   }
