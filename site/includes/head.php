@@ -2,5 +2,6 @@
 	<meta charset="UTF-8">
 	<link href="/static/css/main.css" rel="stylesheet" type="text/css" /> 
 	<title><?php echo($title); ?></title>
-	<script async data-id="five-server" src="http://localhost:5500/fiveserver.js"></script>
+	<?php if ($_SERVER['HTTP_HOST'] == "localhost:8000") {
+		echo ('<script async data-id="five-server" src="http://localhost:5500/fiveserver.js"></script>');} ?>
 </head>

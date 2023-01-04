@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 require_once('config.php');
-require_once('includes/public_functions.php'); 
+require_once('includes/public_functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@ if (isset($_SERVER['REQUEST_URI'])){
 	$elements = explode('/', $path);                // Split path on slashes
 	if(empty($elements[0])) {                       // No path elements means home
 		$title = "UNDER CONSTRUCTION!!!! this shit is 8orken as fuck !!!";
-		$content = "includes/recent_posts.php";
+		$content = "includes/home.php";
 	} else switch(array_shift($elements))             // Pop off first item and switch
 	{
 case 'art':

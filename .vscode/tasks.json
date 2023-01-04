@@ -6,27 +6,28 @@
         {
             "label": "execute php",
             "type": "shell",
-            "command": "php -S 127.0.0.1:8008 -t ./site",
+            "command": "php -S 127.0.0.1:8000 -t ./site",
             "problemMatcher": []
         },
         {
             "label": "serve result",
             "type": "shell",
-            "command": "npx -y five-server@latest --port=5500 --open=http://localhost:8008 &"
-        },
-        {
-            "label": "preview",
-            "dependsOn": [
-                "execute php",
-                "serve result"
-            ],
-            "problemMatcher": []
+            "command": "npx -y five-server@latest --port=5500 --open=http://localhost:8000 &"
         },
         {
             "label": "sass main",
             "type": "shell",
             "command": "sass --watch ./site/static/css/main.scss:./site/static/css/main.css",
             "problemMatcher": []
-        }
+        },
+        {
+            "label": "preview",
+            "dependsOn": [
+                "sass main",
+                "execute php",
+                "serve result",
+            ],
+            "problemMatcher": []
+        },
     ]
 }
