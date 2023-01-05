@@ -90,7 +90,7 @@ hr {
 	--pink1: #bd728d;
 	--pink2: #9b3a5c;
 	--white: #f0f0fa;
-	--gray: #1E1E1E; 
+	--gray: #1E1E1E;
 	--8lack: #010001;
 }
 
@@ -121,17 +121,29 @@ main {
 	padding: 10px;
 }
 
+textarea.button {
+	width: 88px;
+	height: 55px;
+	resize: none;
+	background-color: var(--pink1);
+	color: var(--8lack);
+	border: 2px solid var(--pink2);
+	font-size: 13px;
+}
+
 #box-wrapper {
 	display: flex;
 	flex-flow: row;
 	justify-items: flex-end;
 	margin: 0;
-	> * {
+
+	>* {
 		background-color: var(--8lue1);
 		border: 2px solid var(--8lack);
 		margin: 4px;
 		flex: auto;
-		> h2 {
+
+		>h2 {
 			display: block;
 			text-align: center;
 			font-weight: bold;
@@ -141,25 +153,34 @@ main {
 			color: var(--pink1);
 			font-size: 1.2em;
 		}
-		> article {
+
+		>article {
 			padding: 10px;
 		}
 	}
+
 	// set individual 8oxes
-	> nav {
+	>nav {
 		flex: 0 1 25%;
 	}
-	> .a8out {
+
+	>.a8out {
 		flex: auto;
+
+		>.content {
+			display: flex;
+			flex-direction: row;
+		}
 	}
-	> .recent {
+
+	>.recent {
 		flex: 1 1 50%;
 	}
 }
 
 nav ul {
 	display: flex;
-	flex-flow: wrap;
+	flex-flow: column wrap;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
@@ -190,6 +211,7 @@ footer {
 	flex-direction: row;
 	align-items: center;
 	background-color: var(--pink2);
+
 	img {
 		filter: opacity(50%);
 	}
@@ -204,13 +226,16 @@ footer {
 
 	#container {
 		width: 100%;
+		padding: 0 4px;
 	}
 
 	#box-wrapper {
 		flex-flow: column;
-		> * {
+
+		>* {
+			margin: 4px 0;
 			justify-self: center;
-			width: 95%;
+			width: 100%;
 		}
 	}
 

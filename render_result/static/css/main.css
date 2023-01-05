@@ -190,13 +190,15 @@ footer img {
   }
   #container {
     width: 100%;
+    padding: 0 4px;
   }
   #box-wrapper {
     flex-flow: column;
   }
   #box-wrapper > * {
+    margin: 4px 0;
     justify-self: center;
-    width: 95%;
+    width: 100%;
   }
 }
 *::-webkit-scrollbar-track {

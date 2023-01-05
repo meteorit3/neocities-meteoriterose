@@ -1,3 +1,5 @@
+<body>
+	<div id="container">
 		<header>
 		</header>
 		<main>
@@ -5,7 +7,13 @@
 				<div id="a8out">
 					<h2>About Us</h2>
 					<article class="content">
-						<a href="meteoriterose.neocities.org"><img src="/static/images/8utton.gif"></a>
+						<div>
+							the
+						</div>
+						<div>
+							<a href="https://meteoriterose.neocities.org"><img src="/static/images/8utton.gif"></a>
+							<textarea class="button" style="width:88px;height:55px;resize:none;background-color:var(--pink1);color:var(--8lack);border:2px solid var(--pink2);text-size:5px"><a href="https://meteoriterose.neocities.org"><img src="https://meteoriterose.neocities.org/static/images/8utton.gif"></a></textarea>
+						</div>
 					</article>
 				</div>
 				<nav>
@@ -18,7 +26,11 @@
 					<h2>Recent Blog Posts</h2>
 					<article class="content">
 						<?php
-						displayRecentPosts(5);
+						$list = new Posts;
+						$list->recent(5);
+						foreach ($list->list as $post) {
+							echo ($post->display_info());
+						}
 						?>
 					</article>
 				</div>
@@ -34,3 +46,5 @@
 		<footer>
 			<?php include('includes/footer.php'); ?>
 		</footer>
+	</div>
+</body>
