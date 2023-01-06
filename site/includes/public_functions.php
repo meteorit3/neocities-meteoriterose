@@ -80,7 +80,9 @@ function query($statement, $types, $params)
 {
 	global $mysqli;
 	$stmt = new mysqli_stmt($mysqli, $statement);
-	$stmt->bind_param($types, ...$params);
+	if ($types != "") {
+		$stmt->bind_param($types, ...$params);
+	}
 	$stmt->execute();
 	$result = $stmt->get_result();
 	return $result;
@@ -128,7 +130,7 @@ class Post
 	function get_tags()
 	{
 		$result = query("
-		SELECT tags.tag_id, tags.tag_name FROM tags 
+		SELECT tags.tag_name FROM tags 
 		INNER JOIN post_tags ON tags.tag_id = 
 		post_tags.tag_id WHERE post_tags.post_id = ? 
 		ORDER BY post_tags.relate_id ASC;",
@@ -137,7 +139,7 @@ class Post
 				)
 			->fetch_all(MYSQLI_ASSOC);
 		for ($i = 0; $i < count($result); $i++) {
-			$tags[$i] = $result[$i];
+			$tags[$i] = $result[$i]['tag_name'];
 		}
 		$this->populate([], $tags);
 	}
@@ -151,7 +153,7 @@ class Post
 		$creationtime = date("M j Y H:i:s", strtotime($this->created_at));
 		$tagsblock = "";
 		foreach ($this->tags as $t) {
-			$name = $t['tag_name'];
+			$name = $t;
 			$tagsblock .= "<a href='/search/$name'>#$name </a>";
 		}
 		return
@@ -160,6 +162,22 @@ class Post
 			<p class='created-at'>$creationtime</p>
 			<p class='tags'>$tagsblock</p>
 		 </div>";
+	}
+
+	function upload()
+	{
+		// first upload the post. then create any necessary tags. 
+		// then create links between the post and all relevant tags
+		$querytags = query("SELECT * FROM TAGS", "", []);
+		$extanttags = [];
+		for ($i = 0; $i < $querytags->num_rows; $i++) {
+			$extanttags[] = $querytags->fetch_row()[0];
+		}
+		$newtags = array_diff($this->tags, $extanttags);
+		foreach ($newtags as $t) {
+			query("INSERT INTO tags (tag_name) VALUES (?)", "s", [$t]);
+			query("INSERT INTO post_tags (post_id, tag_id) VALUES (?, (SELECT tag_id FROM tags WHERE tag_name = ?))", "is", [$this->post_id,$t]);
+		}
 	}
 }
 
