@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rozha+One&display=swap');
-
+  
 /* main.scss 0.1.0 | MIT License */
 
 
@@ -29,7 +28,6 @@ body {
 	padding: 0px;
 	overflow-y: hidden;
 	height: 100%;
-	font-size: 1em;
 	line-height: 1.4;
 	-webkit-font-smoothing: antialiased;
 }
@@ -86,12 +84,15 @@ hr {
 :root {
 	--8lue1: #051933;
 	--8lue2: #1a374d;
-	--8lue3: #5190A0;
+	--8lue3: #3d649f;
 	--pink1: #bd728d;
 	--pink2: #9b3a5c;
 	--white: #f0f0fa;
-	--gray: #1E1E1E;
+	--gray: #6b6a6a;
 	--8lack: #010001;
+	--text: 1em;
+	--header: 1.3em;
+	--small: 0.8em;
 }
 
 html {
@@ -100,7 +101,8 @@ html {
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: var(--white);
-	font-family: Verdana;
+	font-family: 'Courier Prime';
+	font-size: var(--text);
 }
 
 #container {
@@ -117,78 +119,32 @@ main {
 	padding: 0;
 }
 
-.content {
-	padding: 10px;
-}
-
 textarea.button {
 	width: 88px;
-	height: 55px;
+	height: 170px;
 	resize: none;
 	background-color: var(--pink1);
 	color: var(--8lack);
 	border: 2px solid var(--pink2);
-	font-size: 13px;
-}
-
-#box-wrapper {
-	display: flex;
-	flex-flow: row;
-	justify-items: flex-end;
-	margin: 0;
-
-	>* {
-		background-color: var(--8lue1);
-		border: 2px solid var(--8lack);
-		margin: 4px;
-		flex: auto;
-
-		>h2 {
-			display: block;
-			text-align: center;
-			font-weight: bold;
-			padding-top: 5px;
-			padding-bottom: 5px;
-			background-color: var(--8lue2);
-			color: var(--pink1);
-			font-size: 1.2em;
-		}
-
-		>article {
-			padding: 10px;
-		}
-	}
-
-	// set individual 8oxes
-	>nav {
-		flex: 0 1 25%;
-	}
-
-	>.a8out {
-		flex: auto;
-
-		>.content {
-			display: flex;
-			flex-direction: row;
-		}
-	}
-
-	>.recent {
-		flex: 1 1 50%;
-	}
+	font-size: var(--small);
 }
 
 nav ul {
 	display: flex;
-	flex-flow: column wrap;
+	flex-flow: column;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
+	flex: 1 0;
 
 	li {
 		border: 2px solid var(--pink2);
 		background-color: var(--pink1);
 		flex: 1;
+	}
+
+	li:hover {
+		background-color: var(--pink2);
 	}
 
 	a {
@@ -199,10 +155,106 @@ nav ul {
 		align-items: center;
 
 		text-decoration: none;
+		font-size: var(--header);
+		font-family: 'Courier Prime 700';
 		color: #051933;
 
 		padding: 0.5em;
-		//filter: drop-shadow(0.4em 0.2em 0.4em #051933)
+	}
+}
+
+.box-wrapper {
+	display: flex;
+	flex-flow: row;
+	justify-items: flex-end;
+	margin: 0;
+	width: 100%;
+	min-height: 300px;
+	max-height: 500px;
+
+	>* {
+		background-color: var(--8lue1);
+		border: 2px solid var(--8lack);
+		margin: 4px;
+		flex: 1;
+
+		>h2 {
+			display: block;
+			text-align: center;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			background-color: var(--8lue2);
+			color: var(--pink1);
+			font-size: var(--header);
+			font-family: 'Courier Prime 700';
+		}
+
+		>article {
+			padding: 10px;
+		}
+	}
+
+	* {
+		min-width: 0; //fixes the flex boxes expanding with the content instead of overflowing
+	}
+
+	// set individual 8oxes
+	>nav {
+		display: flex;
+		flex-direction: column;
+		flex: 0 1 25%;
+	}
+
+	>.a8out {
+		flex: 1 1 100%;
+
+		>article {
+			height: 100%;
+			width: 100%;
+			overflow: auto;
+			overflow-wrap: break-word;
+			position: relative;
+
+			>div {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+		}
+	}
+
+	>.recent {
+		flex: 1 1 30%;
+	}
+
+	>.stampz {
+		flex: 1 1 100%;
+	}
+
+	>.single-box {
+		margin: 0;
+
+		>nav ul {
+			flex-flow: row wrap;
+		}
+	}
+	.post-info {
+		a {
+			text-decoration: none;
+			color: var(--8lue3);
+			width: min-content;
+		}
+		.created-at {
+			color: var(--gray);
+		}
+		h3 a {
+			color: var(--white);
+			font-family: 'Courier Prime 700';
+			width: 100%;
+		}
+		a:hover {
+			filter: brightness(2) opacity(70%);
+		}
 	}
 }
 
@@ -229,7 +281,7 @@ footer {
 		padding: 0 4px;
 	}
 
-	#box-wrapper {
+	.box-wrapper {
 		flex-flow: column;
 
 		>* {

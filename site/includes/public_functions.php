@@ -152,11 +152,11 @@ class Post
 		$tagsblock = "";
 		foreach ($this->tags as $t) {
 			$name = $t['tag_name'];
-			$tagsblock .= "<a href='/search/$name'>#$name</a>";
+			$tagsblock .= "<a href='/search/$name'>#$name </a>";
 		}
 		return
-			"<div class='post_info'>
-			<a href='/post/$this->post_id'> <h3>$this->title</h3> </a>
+			"<div class='post-info'>
+			<h3><a href='/post/$this->post_id'>$this->title</a></h3>
 			<p class='created-at'>$creationtime</p>
 			<p class='tags'>$tagsblock</p>
 		 </div>";

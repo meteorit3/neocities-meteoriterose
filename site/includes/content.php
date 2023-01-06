@@ -1,7 +1,7 @@
 <body>
     <div id="container">
         <main>
-            <div id="box-wrapper">
+            <div class="box-wrapper">
                 <article class="single-box">
                     <nav>
                         <?php include("includes/nav.php") ?>
@@ -9,14 +9,14 @@
                     <h2>
                         <?php echo ($title) ?>
                     </h2>
-                    <div class="content">
+                    <article class="content">
                         <?php echo ($content); ?>
-                    </div>
-                    <footer>
-                        <?php include("includes/footer.php"); ?>
-                    </footer>
+                    </article>
                 </article>
             </div>
+            <footer>
+                <?php include("includes/footer.php"); ?>
+            </footer>
         </main>
     </div>
 </body>

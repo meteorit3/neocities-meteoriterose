@@ -5,7 +5,7 @@ require_once('includes/public_functions.php');
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <?php
 if (isset($_SERVER['REQUEST_URI'])) {

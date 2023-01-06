@@ -90,7 +90,7 @@ hr {
 }
 
 html {
-  background-image: url("/static/images/DREAMCITYBASECROPPED.png");
+  background-image: url("../images/DREAMCITYBASECROPPED.png");
   background-position: bottom center;
   background-size: cover;
   background-repeat: no-repeat;
