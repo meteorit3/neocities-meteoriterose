@@ -6,9 +6,6 @@
 				<div class="a8out">
 					<h2>About Us</h2>
 					<article class="content">
-						<div>
-							button :3
-						</div>
 						this site is completely js free :)<br />
 						the uh algkjalk end of sentenct
 					</article>
