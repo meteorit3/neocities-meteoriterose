@@ -1,7 +1,7 @@
 /* main.scss 0.1.0 | MIT License */
 /*	=================================================================
-	8ase Styles
-	================================================================= */
+8ase Styles
+================================================================= */
 /*	use a more intuitive 8ox Sizing model */
 *,
 *::before,
@@ -15,9 +15,9 @@
 }
 
 /*	allow percentage-8ased Heights
- *	default font size
- *	accessi8le Line Height
- *	8etter Text rendering on macos */
+*	default font size
+*	accessi8le Line Height
+*	8etter Text rendering on macos */
 html,
 body {
   margin: 0px;
@@ -26,6 +26,7 @@ body {
   height: 100%;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  image-rendering: crisp-edges;
 }
 
 /* improved media defaults */
@@ -73,8 +74,8 @@ hr {
 }
 
 /*	=================================================================
-	Author Styles
-	================================================================= */
+Author Styles
+================================================================= */
 :root {
   --8lue1: #051933;
   --8lue2: #1a374d;
@@ -115,12 +116,24 @@ main {
 
 textarea.button {
   width: 88px;
-  height: 170px;
+  height: 31px;
   resize: none;
   background-color: var(--pink1);
   color: var(--8lack);
   border: 2px solid var(--pink2);
   font-size: var(--small);
+}
+
+img.button {
+  transform: scale(1);
+  transition: transform 0.1s ease-in-out;
+}
+
+*:hover > img.button {
+  z-index: 1000;
+  pointer-events: none;
+  transform: scale(2);
+  transition: transform 0.1s ease-in-out;
 }
 
 nav ul {
@@ -170,8 +183,7 @@ nav ul a {
 .box-wrapper > * > h2 {
   display: block;
   text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
   background-color: var(--8lue2);
   color: var(--pink1);
   font-size: var(--header);
@@ -179,6 +191,7 @@ nav ul a {
 }
 .box-wrapper > * > article {
   padding: 10px;
+  position: relative;
 }
 .box-wrapper * {
   min-width: 0;
@@ -196,18 +209,28 @@ nav ul a {
   width: 100%;
   overflow: auto;
   overflow-wrap: break-word;
-  position: relative;
-}
-.box-wrapper > .a8out > article > div {
-  position: absolute;
-  top: 10px;
-  right: 10px;
 }
 .box-wrapper > .recent {
   flex: 1 1 30%;
 }
 .box-wrapper > .stampz {
   flex: 1 1 100%;
+}
+.box-wrapper > .stampz > article > * {
+  display: flex;
+  flex-flow: wrap;
+}
+.box-wrapper > .stampz > article > * img {
+  transform: scale(1);
+  transition: transform 0.1s ease-in-out;
+}
+.box-wrapper > .stampz > article > * > *:hover {
+  z-index: 1;
+}
+.box-wrapper > .stampz > article > * > *:hover img {
+  pointer-events: none;
+  transform: scale(2);
+  transition: transform 0.1s ease-in-out;
 }
 .box-wrapper > .single-box {
   margin: 0;
