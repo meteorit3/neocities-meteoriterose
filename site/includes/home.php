@@ -47,6 +47,7 @@
 							<textarea class="button" title="button code for copy pasting"><a href="https://meteoriterose.neocities.org"><img src="https://meteoriterose.neocities.org/static/images/8utton.gif"></a></textarea>
 						</div>
 						<hr>
+						MORE BUTTONS AND STAMPS. [SOME OF THEM HAVE LINKS] [SOME OF THE LINKS ARE VIRUSES]
 						<div>
 							<?php
 							function displaybuttons($dir)
