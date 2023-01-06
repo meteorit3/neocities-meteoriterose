@@ -8,3 +8,4 @@ php_pid=$!;
 sleep 0.1;
 wget -rkE localhost:8008 -nH -P public;
 kill $php_pid;
+neocities push public
