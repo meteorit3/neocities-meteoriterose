@@ -26,7 +26,7 @@
   	padding: 0px;
   	overflow-y: hidden;
   	height: 100%;
-  	line-height: 1.4;
+  	line-height: 1.5;
   	-webkit-font-smoothing: antialiased;
   	image-rendering: crisp-edges;
   }
@@ -76,9 +76,9 @@
   }
 
 
-  /*	=================================================================
-	Author Styles
-	================================================================= */
+  // =================================================================
+  // Author Styles
+  // =================================================================
 
   :root {
   	--8lue1: #051933;
@@ -140,6 +140,7 @@
   	transition: transform 0.1s ease-in-out;
   }
 
+  //nav ================================================================
   nav ul {
   	display: flex;
   	flex-flow: column;
@@ -174,6 +175,7 @@
   	}
   }
 
+  // box-wrapper =============================================================
   .box-wrapper {
   	display: flex;
   	flex-flow: row;
@@ -209,7 +211,7 @@
   		min-width: 0; //fixes the flex boxes expanding with the content instead of overflowing
   	}
 
-  	// set individual 8oxes
+  	// set individual 8oxes ====================================
   	>nav {
   		display: flex;
   		flex-direction: column;
@@ -287,8 +289,8 @@
   }
 
   footer {
-  	display: flex;
-  	flex-direction: row;
+  	display: grid;
+  	grid-auto-flow: column;
   	align-items: center;
   	background-color: var(--pink2);
 
@@ -297,6 +299,7 @@
   	}
   }
 
+  // media ==============================================================================================
   @media only screen and (max-width: 1000px) {
 
   	html,
@@ -309,8 +312,12 @@
   		padding: 0 4px;
   	}
 
+  	nav ul {
+  		flex-flow: row
+  	}
   	.box-wrapper {
   		flex-flow: column;
+  		max-height: fit-content;
 
   		>* {
   			margin: 4px 0;
@@ -321,6 +328,13 @@
 
   }
 
+  @media only screen and (hover: none) and (pointer: coarse) {
+  	:root {
+  		--text: 2em;
+  		--header: 1.5em;
+  		--small: 0.8em;
+  	}
+  }
   *::-webkit-scrollbar-track {
   	background-color: var(--pink2);
   }

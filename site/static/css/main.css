@@ -24,7 +24,7 @@ body {
   padding: 0px;
   overflow-y: hidden;
   height: 100%;
-  line-height: 1.4;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   image-rendering: crisp-edges;
 }
@@ -73,9 +73,6 @@ hr {
   padding: 0;
 }
 
-/*	=================================================================
-Author Styles
-================================================================= */
 :root {
   --8lue1: #051933;
   --8lue2: #1a374d;
@@ -256,8 +253,8 @@ nav ul a {
 }
 
 footer {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
   background-color: var(--pink2);
 }
@@ -274,13 +271,24 @@ footer img {
     width: 100%;
     padding: 0 4px;
   }
+  nav ul {
+    flex-flow: row;
+  }
   .box-wrapper {
     flex-flow: column;
+    max-height: fit-content;
   }
   .box-wrapper > * {
     margin: 4px 0;
     justify-self: center;
     width: 100%;
+  }
+}
+@media only screen and (hover: none) and (pointer: coarse) {
+  :root {
+    --text: 2em;
+    --header: 1.5em;
+    --small: 0.8em;
   }
 }
 *::-webkit-scrollbar-track {

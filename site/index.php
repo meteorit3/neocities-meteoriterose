@@ -25,7 +25,7 @@ if (isset($_SERVER['REQUEST_URI'])) {
 				$tag = "art";
 				break;
 			case 'search':
-				$tag = array_shift($elements);
+				$tag = urldecode(array_shift($elements));
 				$title = "Posts Tagged #" . $tag;
 				$filtered = new Posts;
 				$filtered->filter($tag);
