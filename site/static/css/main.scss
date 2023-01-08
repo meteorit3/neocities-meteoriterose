@@ -119,6 +119,8 @@
   	grid-template-columns: auto auto auto auto auto;
   	grid-template-rows: 300px 300px;
   	grid-gap: 10px 10px;
+  	overflow-y: scroll;
+  	overflow-x: visible;
   	>* {
   		display: flex;
   		flex-direction: column;
@@ -176,6 +178,10 @@
   .content {
   	padding: 10px;
   }
+  .single-box {
+  	grid-column: span 5;
+  	grid-row: span 2;
+  }
   textarea.button {
   	width: 88px;
   	height: 31px;
@@ -189,6 +195,7 @@
   	z-index: 1;
   }
   a.button:hover>img {
+  	z-index: 2;
   	transform: scale(2);
   	transition: transform 0.1s ease-in-out;
   }
@@ -223,7 +230,6 @@
   		grid-column-start: auto;
   		border: 2px solid var(--pink2);
   		background-color: var(--pink1);
-  		padding: 0.5em;
   		min-width: 10rem;
   	}
 
@@ -241,6 +247,13 @@
   		font-size: var(--header);
   		font-family: 'Courier Prime 700';
   		color: #051933;
+
+  	}
+  }
+  .single-box nav ul {
+  	grid-auto-flow: row;
+  	a {
+  		padding: 0.5em;
   	}
   }
 
@@ -251,13 +264,16 @@
   	display: flex;
   	flex-flow: row;
   	background-color: var(--pink2);
+  	align-items: center;
 
   	address,
   	span {
-  		margin: 0 1em 0 0;
+  		display: inline;
+  		margin: 0 2rem 0 0;
   	}
   	img {
   		filter: opacity(50%);
+  		min-width: 88px;
   	}
   }
 

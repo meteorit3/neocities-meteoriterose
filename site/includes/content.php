@@ -1,22 +1,20 @@
 <body>
     <div id="container">
         <main>
-            <div class="wrapper">
-                <article class="single-box">
-                    <nav>
-                        <?php include("includes/nav.php") ?>
-                    </nav>
-                    <h2>
-                        <?php echo ($title) ?>
-                    </h2>
-                    <article class="content">
-                        <?php echo ($content); ?>
-                    </article>
+            <article class="single-box">
+                <nav>
+                    <?php include("includes/nav.php") ?>
+                </nav>
+                <h2>
+                    <?php echo ($title) ?>
+                </h2>
+                <article class="content">
+                    <?php echo ($content); ?>
                 </article>
-            </div>
-            <footer>
-                <?php include("includes/footer.php"); ?>
-            </footer>
+            </article>
         </main>
+        <footer>
+            <?php include("includes/footer.php"); ?>
+        </footer>
     </div>
 </body>
