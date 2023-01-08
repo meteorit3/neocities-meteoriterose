@@ -82,16 +82,15 @@ hr {
   --white: #f0f0fa;
   --gray: #6b6a6a;
   --8lack: #010001;
-  --text: 1em;
-  --header: 1.3em;
-  --small: 0.8em;
+  --text: 16px;
+  --header: 22px;
+  --small: 10px;
 }
 
 html {
   background-image: url("/static/images/DREAMCITYBASECROPPED.png");
   background-position: bottom center;
   background-size: cover;
-  background-repeat: no-repeat;
   color: var(--white);
   font-family: "Courier Prime";
   font-size: var(--text);
@@ -104,11 +103,70 @@ html {
   transform: translate(-50%, 0);
   max-width: 1200px;
   height: 100%;
-  padding-top: 30px;
+  padding-top: 2vw;
 }
 
 main {
   padding: 0;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 300px 300px;
+  grid-gap: 10px 10px;
+}
+main > * {
+  background-color: var(--8lue1);
+  border: 2px solid var(--8lack);
+}
+
+h2 {
+  display: block;
+  text-align: center;
+  padding: 5px;
+  background-color: var(--8lue2);
+  color: var(--pink1);
+  font-size: var(--header);
+  font-family: "Courier Prime 700";
+}
+
+.a8out {
+  grid-column: 1/5;
+  grid-row: 1;
+}
+
+nav {
+  grid-column: 5;
+  grid-row: 1;
+}
+
+.recent {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.stampz {
+  grid-column: 2/6;
+  grid-row: 2;
+}
+.stampz > .content > * {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-info a {
+  text-decoration: none;
+  color: var(--8lue3);
+  width: min-content;
+}
+.post-info .created-at {
+  color: var(--gray);
+}
+.post-info h3 a {
+  color: var(--white);
+  font-family: "Courier Prime 700";
+  width: 100%;
+}
+.post-info a:hover {
+  filter: brightness(2) opacity(70%);
 }
 
 textarea.button {
@@ -121,16 +179,29 @@ textarea.button {
   font-size: var(--small);
 }
 
-img.button {
+a.button:hover {
+  z-index: 1;
+}
+
+a.button:hover > img {
+  transform: scale(2);
+  transition: transform 0.1s ease-in-out;
+}
+
+a.button > img {
+  pointer-events: none;
   transform: scale(1);
   transition: transform 0.1s ease-in-out;
 }
 
-*:hover > img.button {
-  z-index: 1000;
-  pointer-events: none;
-  transform: scale(2);
-  transition: transform 0.1s ease-in-out;
+.pfp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100px;
+}
+.pfp img {
+  width: 100%;
 }
 
 nav ul {
@@ -162,101 +233,30 @@ nav ul a {
   padding: 0.5em;
 }
 
-.box-wrapper {
-  display: flex;
-  flex-flow: row;
-  justify-items: flex-end;
-  margin: 0;
-  width: 100%;
+.wrapper {
+  display: grid;
   min-height: 300px;
-  max-height: 500px;
+  max-height: 450px;
 }
-.box-wrapper > * {
-  background-color: var(--8lue1);
-  border: 2px solid var(--8lack);
-  margin: 4px;
-  flex: 1;
-}
-.box-wrapper > * > h2 {
-  display: block;
-  text-align: center;
-  padding: 5px;
-  background-color: var(--8lue2);
-  color: var(--pink1);
-  font-size: var(--header);
-  font-family: "Courier Prime 700";
-}
-.box-wrapper > * > article {
-  padding: 10px;
-  position: relative;
-}
-.box-wrapper * {
-  min-width: 0;
-}
-.box-wrapper > nav {
+.wrapper > nav {
   display: flex;
   flex-direction: column;
-  flex: 0 1 25%;
 }
-.box-wrapper > .a8out {
-  flex: 1 1 100%;
-}
-.box-wrapper > .a8out > article {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  overflow-wrap: break-word;
-}
-.box-wrapper > .recent {
-  flex: 1 1 30%;
-}
-.box-wrapper > .stampz {
-  flex: 1 1 100%;
-}
-.box-wrapper > .stampz > article > * {
-  display: flex;
-  flex-flow: wrap;
-}
-.box-wrapper > .stampz > article > * img {
-  transform: scale(1);
-  transition: transform 0.1s ease-in-out;
-}
-.box-wrapper > .stampz > article > * > *:hover {
-  z-index: 1;
-}
-.box-wrapper > .stampz > article > * > *:hover img {
-  pointer-events: none;
-  transform: scale(2);
-  transition: transform 0.1s ease-in-out;
-}
-.box-wrapper > .single-box {
+.wrapper > .single-box {
   margin: 0;
 }
-.box-wrapper > .single-box > nav ul {
+.wrapper > .single-box > nav ul {
   flex-flow: row wrap;
-}
-.box-wrapper .post-info a {
-  text-decoration: none;
-  color: var(--8lue3);
-  width: min-content;
-}
-.box-wrapper .post-info .created-at {
-  color: var(--gray);
-}
-.box-wrapper .post-info h3 a {
-  color: var(--white);
-  font-family: "Courier Prime 700";
-  width: 100%;
-}
-.box-wrapper .post-info a:hover {
-  filter: brightness(2) opacity(70%);
 }
 
 footer {
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
+  display: flex;
+  flex-flow: row;
   background-color: var(--pink2);
+}
+footer address,
+footer span {
+  margin: 0 1em 0 0;
 }
 footer img {
   filter: opacity(50%);
@@ -274,11 +274,11 @@ footer img {
   nav ul {
     flex-flow: row;
   }
-  .box-wrapper {
+  .wrapper {
     flex-flow: column;
     max-height: fit-content;
   }
-  .box-wrapper > * {
+  .wrapper > * {
     margin: 4px 0;
     justify-self: center;
     width: 100%;

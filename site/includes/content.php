@@ -1,7 +1,7 @@
 <body>
     <div id="container">
         <main>
-            <div class="box-wrapper">
+            <div class="wrapper">
                 <article class="single-box">
                     <nav>
                         <?php include("includes/nav.php") ?>

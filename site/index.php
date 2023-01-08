@@ -19,10 +19,9 @@ if (isset($_SERVER['REQUEST_URI'])) {
 	} else
 		switch (array_shift($elements)) // Pop off first item and switch
 		{
-			case 'art':
-				$title = "COOL ART :]";
-				$content = "includes/filtered_posts.php";
-				$tag = "art";
+			case 'art' or 'linkspam' or 'projects':
+				$title = "well put something here eventually :3";
+				$body = render("includes/content.php", ['title' => $title, 'content' => ""]);
 				break;
 			case 'search':
 				$tag = urldecode(array_shift($elements));
