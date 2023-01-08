@@ -28,7 +28,7 @@
 			<div class="stampz">
 				<h2>Buttons + Stamps +swageever</h2>
 				<article class="content">
-					COOL FRIENDS AND COOL SITES
+					COOL FRIENDS
 					<div>
 						<a class="button" href="https://tileerror.neocities.org/"><img src="https://tileerror.neocities.org/images/ton.png" alt="tile error" /></a>
 						<a class="button" href="https://biene.neocities.org/"><img src="https://biene.neocities.org/images/button.gif" alt="dash" /></a>
@@ -41,7 +41,7 @@
 						<textarea class="button" title="button code for copy pasting"><a href="https://meteoriterose.neocities.org"><img src="https://meteoriterose.neocities.org/static/images/8utton.gif"></a></textarea>
 					</div>
 					<hr>
-					MORE BUTTONS AND STAMPS. [SOME OF THEM HAVE LINKS] [SOME OF THE LINKS ARE VIRUSES]
+					COOL SITES
 					<div>
 						<?php
 						function displaybuttons($dir)

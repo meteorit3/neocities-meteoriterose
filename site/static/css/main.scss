@@ -110,17 +110,18 @@
   	transform: translate(-50%, 0);
   	max-width: 1200px;
   	height: 100%;
-  	padding-top: 2vw;
-
   }
 
   main {
   	padding: 0;
+  	margin: 30px 0 10px 0;
   	display: grid;
-  	grid-template-columns: 20% 20% 20% 20% 20%;
+  	grid-template-columns: auto auto auto auto auto;
   	grid-template-rows: 300px 300px;
   	grid-gap: 10px 10px;
   	>* {
+  		display: flex;
+  		flex-direction: column;
   		background-color: var(--8lue1);
   		border: 2px solid var(--8lack);
   	}
@@ -152,10 +153,7 @@
   	>.content>* {
   		display: flex;
   		flex-wrap: wrap;
-
-
   	}
-
   }
   .post-info {
   	a {
@@ -163,20 +161,20 @@
   		color: var(--8lue3);
   		width: min-content;
   	}
-
   	.created-at {
   		color: var(--gray);
   	}
-
   	h3 a {
   		color: var(--white);
   		font-family: 'Courier Prime 700';
   		width: 100%;
   	}
-
   	a:hover {
   		filter: brightness(2) opacity(70%);
   	}
+  }
+  .content {
+  	padding: 10px;
   }
   textarea.button {
   	width: 88px;
@@ -211,17 +209,22 @@
 
   //nav ================================================================
   nav ul {
-  	display: flex;
-  	flex-flow: column;
+  	flex: 1;
+  	display: grid;
+  	grid-auto-flow: column;
+  	grid-template-columns: auto auto auto auto;
+  	grid-template-rows: auto auto auto auto;
   	list-style-type: none;
   	padding: 0;
   	margin: 0;
-  	flex: 1 0;
 
   	li {
+  		grid-row-start: auto;
+  		grid-column-start: auto;
   		border: 2px solid var(--pink2);
   		background-color: var(--pink1);
-  		flex: 1;
+  		padding: 0.5em;
+  		min-width: 10rem;
   	}
 
   	li:hover {
@@ -230,7 +233,6 @@
 
   	a {
   		height: 100%;
-  		min-width: 8em;
   		display: flex;
   		justify-content: center;
   		align-items: center;
@@ -239,38 +241,11 @@
   		font-size: var(--header);
   		font-family: 'Courier Prime 700';
   		color: #051933;
-
-  		padding: 0.5em;
   	}
   }
 
 
   // box-wrapper =============================================================
-  .wrapper {
-  	display: grid;
-  	min-height: 300px;
-  	max-height: 450px;
-
-
-  	// set individual 8oxes ====================================
-  	>nav {
-  		display: flex;
-  		flex-direction: column;
-  	}
-
-
-  	>.stampz {}
-
-  	>.single-box {
-  		margin: 0;
-
-  		>nav ul {
-  			flex-flow: row wrap;
-  		}
-  	}
-
-
-  }
 
   footer {
   	display: flex;
@@ -300,7 +275,7 @@
   	}
 
   	nav ul {
-  		flex-flow: row
+  		flex-flow: row wrap;
   	}
   	.wrapper {
   		flex-flow: column;
