@@ -28,15 +28,15 @@
 			<div class="stampz">
 				<h2>Buttons + Stamps +swageever</h2>
 				<article class="content">
-					COOL FRIENDS
+					COOL FRIENDS [+ us]
 					<div>
 						<a class="button" href="https://tileerror.neocities.org/"><img src="https://tileerror.neocities.org/images/ton.png" alt="tile error" /></a>
 						<a class="button" href="https://biene.neocities.org/"><img src="https://biene.neocities.org/images/button.gif" alt="dash" /></a>
 						<a class="button" href="https://caseolum.neocities.org"><img src="https://caseolum.neocities.org/Caseolumbutton.png" alt="caseolum" /></a>
 						<a class="button" href="https://birbss.neocities.org/"><img src="https://birbss.neocities.org/rubybutton2.png" alt="birbss" /></a>
 						<a class="button" href="https://woolie.neocities.org/"><img src="https://woolie.neocities.org/button.png" alt="woolie" /></a>
-						<a class="button" href="https://zache.neocities.org/"><img src="https://caseolum.neocities.org/zachbutton.png" alt="zache" /></a>
-						<span style="width: 88px; text-align: center;">and us:</span>
+						<a class="button" href="https://zache.neocities.org/"><img width=88 src="https://caseolum.neocities.org/zachbutton.png" alt="zache" /></a>
+						<!-- <span style="width: 88px; text-align: center;">and us:</span> -->
 						<a class="button" href="https://meteoriterose.neocities.org"><img src="/static/images/8utton.gif" alt="meteorite rose" /></a>
 						<textarea class="button" title="button code for copy pasting"><a href="https://meteoriterose.neocities.org"><img src="https://meteoriterose.neocities.org/static/images/8utton.gif"></a></textarea>
 					</div>
